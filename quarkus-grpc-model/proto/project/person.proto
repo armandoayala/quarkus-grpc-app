@@ -1,0 +1,49 @@
+// [START declaration]
+syntax = "proto3";
+
+// import "google/protobuf/timestamp.proto";
+// [END declaration]
+
+// [START java_declaration]
+option java_multiple_files = true;
+option java_package = "org.lab.arm.quarkus.grpc.model";
+option java_outer_classname = "PersonDomainProto";
+// [END java_declaration]
+
+// [START messages]
+enum PhoneType {
+  MOBILE = 0;
+  HOME = 1;
+  WORK = 2;
+}
+
+message PhoneNumber {
+  string number = 1;
+  PhoneType type = 2;
+}
+
+message PersonEntity {
+  string name = 1;
+  int64 id = 2;  // Unique ID number for this person.
+  string email = 3;
+
+  repeated PhoneNumber phones = 4;
+
+  int64 createdAt = 5;
+  int64 updatedAt = 6;
+  int64 deletedAt = 7;
+}
+
+message CreatePersonRequest {
+  string name = 1;
+  int64 id = 2;  // Unique ID number for this person.
+  string email = 3;
+  repeated PhoneNumber phones = 4;
+}
+
+message CreatePersonResponse {
+  PersonEntity person = 1;
+  bool success= 2;
+  string message= 3;
+}
+// [END messages]

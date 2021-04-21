@@ -1,0 +1,20 @@
+// [START declaration]
+syntax = "proto3";
+
+// import "google/protobuf/timestamp.proto";
+// [END declaration]
+
+// [START java_declaration]
+option java_multiple_files = true;
+option java_package = "org.lab.arm.quarkus.grpc.service";
+option java_outer_classname = "PersonServiceProto";
+// [END java_declaration]
+
+import "project/person.proto";
+
+// [START service]
+service PersonService {
+  // Sends a greeting
+  rpc Create (CreatePersonRequest) returns (CreatePersonResponse) {}
+}
+// [END service]
